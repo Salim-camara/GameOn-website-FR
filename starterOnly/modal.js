@@ -48,7 +48,6 @@ const handleForm = () => {
         if (input.value == null || input.value == '') {
           const error = document.createElement('p');
           error.innerHTML = 'Veuillez saisir un nom';
-          error.id = 'error';
           input.insertAdjacentElement('afterend', error);
         } else {
           console.log('fail');
@@ -59,40 +58,48 @@ const handleForm = () => {
           if (input.value == null || input.value == '') {
             const error = document.createElement('p');
             error.innerHTML = 'Veuillez saisir une adresse mail valide';
-            error.id = 'error';
             input.insertAdjacentElement('afterend', error);
           } else {
             console.log('fail_email');
           }
+      break;
 
       case 'date':
           if (input.value == null || input.value == '') {
             const error = document.createElement('p');
             error.innerHTML = 'Veuillez saisir une date';
-            error.id = 'error';
             input.insertAdjacentElement('afterend', error);
           } else {
             console.log('fail_date');
           }
+      break;
 
       case 'radio':
-          let test = false;
-
           console.log('test_radio' + inputs);
           for (const element of inputs) {
-            if(element.type == 'radio' && element.checked) {
-              test = true;
-            }
-          }
+            if(!(element.type == 'radio' && element.checked)) {
+              const radioLast = document.querySelector('.radioContainer');
+              const error = document.createElement('p');
+              error.innerHTML = 'Veuillez saisir une ville';
+              error.classList.add('errorRadio');
 
-          if (test != true) {
-            const error = document.createElement('p');
-            error.innerHTML = 'Veuillez saisir une date';
-            error.classList.add('error_radio');
-            error.id = 'error';
-          } else {
-            console.log('fail_radio');
+              if(!document.querySelector('.errorRadio')) {
+                radioLast.appendChild(error);
+                console.log('radio_ifelse');
+              }
+            } 
           }
+      break;
+
+      case 'checkbox':
+          const lastCheckbox = document.querySelector('.checkboxContainer');
+          if(!(document.querySelector('.checkboxRequired') && document.querySelector('.checkboxRequired').checked)) {
+            const error = document.createElement('p');
+            error.innerHTML = 'Veuillez selectionner le champ obligatoire';
+            error.classList.add('errorCheckbox');
+            lastCheckbox.appendChild(error);
+          }
+      break;
 
 
     }
