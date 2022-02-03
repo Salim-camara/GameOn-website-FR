@@ -64,8 +64,15 @@ img {
   border-radius: 15px;
 }
 
+.underline {
+  border-bottom: 1px solid white;
+  padding-bottom: 3px;
+}
+
 .topnav .icon {
   display: none;
+  color: #ff0000;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 768px) {
@@ -97,7 +104,10 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
+  }
+
+  .modal-body{
   }
 } 
 
@@ -420,7 +430,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* min-width: 424px; */
 }
 .hero-content::after {
   content: "";

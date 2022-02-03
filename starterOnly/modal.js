@@ -22,6 +22,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
   body.style.overflow = "hidden";
+  const topnav = document.querySelector('.topnav');
 }
 
 // close modal form
@@ -80,22 +81,33 @@ const handleForm = async () => {
       break;
 
       case 'radio':
-          for (const element of inputs) {
-            if(!(element.type == 'radio' && element.checked)) {
-              const radioLast = document.querySelector('.radioContainer');
-              const error = document.createElement('p');
-              error.style.color = 'red';
-              error.style.fontSize = '15px';
-              error.innerHTML = 'Veuillez saisir une ville';
-              error.classList.add('errorRadio');
-              error.classList.add('error');
-
-              if(!document.querySelector('.errorRadio')) {
-                radioLast.appendChild(error);
-                console.log('radio_ifelse');
-              }
-            } 
+          
+          const radioLast = document.querySelector('.radioContainer');
+          const test = document.createElement('p');
+          test.innerHTML = 'Veuillez selectionner une ville';
+          test.classList.add('error');
+          radioLast.appendChild(test);
+          for(const element of inputs) {
+            if(element.checked) {
+              test.style.display = 'none';
+            }
           }
+          // for(const element of inputs) {
+          //   if(!(element.type == 'radio' && element.checked)) {
+          //     const radioLast = document.querySelector('.radioContainer');
+          //     const error = document.createElement('p');
+          //     error.style.color = 'red';
+          //     error.style.fontSize = '15px';
+          //     error.innerHTML = 'Veuillez saisir une ville';
+          //     error.classList.add('errorRadio');
+          //     error.classList.add('error');
+              
+          //     if(!document.querySelector('.errorRadio')) {
+          //       radioLast.appendChild(error);
+          //       console.log('radio_ifelse');
+          //     }
+          //   } 
+          // }
       break;
 
       case 'checkbox':
