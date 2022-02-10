@@ -21,21 +21,6 @@ const closeModal = () => {
   body.style.overflow = "visible";
 }
 
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-  closeModal();
-}
-
-
-// launch modal event
-modalBtn.addEventListener("click", () => {launchModal(); console.log('bonjour')});
-modalBtn1.addEventListener("click", () => {launchModal(); console.log('bonjour')});
-
 // launch modal form
 const launchModal = async () => {
   await topNav.classList.remove('responsive');
@@ -47,7 +32,23 @@ const launchModal = async () => {
   containerModalbg.style.display = 'flex';
 }
 
-// formulaire radio
+// handle burger
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+  closeModal();
+}
+
+// launch modal event
+modalBtn.addEventListener("click", () => {launchModal(); console.log('bonjour')});
+modalBtn1.addEventListener("click", () => {launchModal(); console.log('bonjour')});
+
+
+// form radio
 const handleRadio = () => {
   let allTest = true;
   const radios = document.querySelectorAll('.inputRadio');
@@ -72,7 +73,7 @@ const handleRadio = () => {
   }
 }
 
-// formulaire
+// form
 const handleForm = async () => {
   const inputs = document.querySelectorAll('.formulaire');
   const errors = document.querySelectorAll('.error');
@@ -145,6 +146,7 @@ const handleForm = async () => {
   }
 }
 
+// validate form
 btnSubmit.addEventListener('click', async (e) => {
   e.preventDefault();
   await handleRadio();
@@ -174,7 +176,7 @@ btnSubmit.addEventListener('click', async (e) => {
   }
 })
 
-
+// close modal function
 closeBtn.addEventListener('click', () => {
   closeModal();
 });
