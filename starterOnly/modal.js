@@ -1,3 +1,26 @@
+// DOM Elements
+const modalbg = document.querySelector(".bground");
+const containerModalbg = document.querySelector('.test');
+const modalBtn = document.querySelector(".modal-btn");
+const modalBtn1 = document.querySelector(".modal-btn1");
+const topNav = document.querySelector('#myTopnav');
+const formData = document.querySelectorAll(".formData");
+const closeBtn = document.querySelector(".close");
+const body = document.querySelector('body');
+const form = document.querySelector('form');
+const btnSubmit = document.querySelector('.btn-submit');
+
+// close modal form
+const closeModal = () => {
+  console.log('in_close_modal');
+  if(window.innerWidth < 540) {
+    const body = document.querySelector('body');
+    body.style.overflow = 'auto';
+  }
+  containerModalbg.style.display = "none";
+  body.style.overflow = "visible";
+}
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -5,41 +28,51 @@ function editNav() {
   } else {
     x.className = "topnav";
   }
+  closeModal();
 }
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const containerModalbg = document.querySelector('.test');
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
-const body = document.querySelector('body');
-const form = document.querySelector('form');
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.addEventListener("click", () => {launchModal(); console.log('bonjour')});
+modalBtn1.addEventListener("click", () => {launchModal(); console.log('bonjour')});
 
 // launch modal form
-function launchModal() {
+const launchModal = async () => {
+  await topNav.classList.remove('responsive');
+  if(window.innerWidth < 540) {
+    const body = document.querySelector('body');
+    body.style.overflow = 'hidden';
+    window.scroll(0, 0);
+  }
   containerModalbg.style.display = 'flex';
-  // modalbg.style.display = "block";
-  // body.style.overflow = "hidden";
-  const topnav = document.querySelector('.topnav');
-  // topnav.classList.add('topnav_fixed');
 }
 
-// close modal form
-const closeModal = () => {
-  modalbg.style.display = "none";
-  body.style.overflow = "visible";
+// formulaire radio
+const handleRadio = () => {
+  let allTest = true;
+  const radios = document.querySelectorAll('.inputRadio');
+  const radioLast = document.querySelector('.radioContainer');
+  const errorRadio = document.querySelector('.error_radio');
+  if (errorRadio) {
+    errorRadio.remove();
+  }
+  for (const element of radios) {
+    if(element.checked) {
+      allTest = false
+    }
+  } 
+  if (allTest == true) {
+    const error = document.createElement('p');
+    error.style.color = 'red';
+    error.style.fontSize = '15px';
+    error.classList.add('error_radio');
+    error.innerHTML = 'Veuillez selectionner une ville';
+    radioLast.appendChild(error);
+  }
 }
-
-
-
 
 // formulaire
 const handleForm = async () => {
-  
   const inputs = document.querySelectorAll('.formulaire');
   const errors = document.querySelectorAll('.error');
 
@@ -83,35 +116,10 @@ const handleForm = async () => {
           }
       break;
 
-      case 'radio':
-          
-          const radioLast = document.querySelector('.radioContainer');
-          const test = document.createElement('p');
-          test.innerHTML = 'Veuillez selectionner une ville';
-          test.classList.add('error');
-          radioLast.appendChild(test);
-          for(const element of inputs) {
-            if(element.checked) {
-              test.style.display = 'none';
-            }
+      case 'number':
+          if (input.value == null || input.value == '') {
+            input.insertAdjacentElement('afterend', error('Veuillez saisir un nombre'));
           }
-          // for(const element of inputs) {
-          //   if(!(element.type == 'radio' && element.checked)) {
-          //     const radioLast = document.querySelector('.radioContainer');
-          //     const error = document.createElement('p');
-          //     error.style.color = 'red';
-          //     error.style.fontSize = '15px';
-          //     error.innerHTML = 'Veuillez saisir une ville';
-          //     error.classList.add('errorRadio');
-          //     error.classList.add('error');
-              
-          //     if(!document.querySelector('.errorRadio')) {
-          //       radioLast.appendChild(error);
-          //       console.log('radio_ifelse');
-          //     }
-          //   } 
-          // }
-      break;
 
       case 'checkbox':
           const lastCheckbox = document.querySelector('.checkboxContainer');
@@ -132,7 +140,23 @@ const handleForm = async () => {
   }
 }
 
+btnSubmit.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await handleRadio();
+  await handleForm();
+  console.log(document.querySelectorAll('.error'));
+  const allErrors = document.querySelectorAll('.error');
+  const errorRadio = document.querySelector('.error_radio');
+  if ((allErrors.length > 0) || (errorRadio)) {
+    console.log('fail');
+  } else {
+    console.log('success');
+  }
+})
 
-closeBtn.addEventListener('click', handleForm);
+
+closeBtn.addEventListener('click', () => {
+  closeModal();
+});
 
 

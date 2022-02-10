@@ -188,7 +188,6 @@ main {
   align-items: flex-end;
   background-color: transparent;
   z-index: 10;
-  overflow: scroll;
   margin: 0;
 }
 
@@ -572,10 +571,6 @@ footer {
   .text-label {
     font-size: 11px;
     margin-top: 10px;
-  }
-
-  body {
-    overflow: hidden;
   }
 
   .test {
