@@ -131,6 +131,7 @@ const handleForm = async () => {
             error.innerHTML = 'Veuillez selectionner le champ obligatoire';
             error.style.color = '#EA4858FF';
             error.style.fontSize = '12px';
+            error.style.fontWeight = '100';
             error.classList.add('errorCheckbox');
             error.classList.add('error');
 
@@ -163,6 +164,7 @@ btnSubmit.addEventListener('click', async (e) => {
     const button = document.createElement('input');
     button.type = 'submit';
     button.value = 'Fermer';
+    button.classList.add('buttonClose');
     button.classList.add('button');
     content.appendChild(text);
     content.appendChild(button);
