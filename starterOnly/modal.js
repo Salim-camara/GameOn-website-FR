@@ -65,6 +65,7 @@ const handleRadio = () => {
     const error = document.createElement('p');
     error.style.color = '#EA4858FF';
     error.style.fontSize = '12px';
+    error.style.fontWeight = '100';
     error.classList.add('error_radio');
     error.innerHTML = 'Veuillez selectionner une ville';
     radioLast.appendChild(error);

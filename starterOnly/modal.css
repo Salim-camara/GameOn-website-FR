@@ -160,6 +160,7 @@ main {
 
 .modal-btn {
   font-size: 145%;
+  z-index: 2;
   background: #fe142f;
   display: flex;
   margin: auto;
@@ -494,11 +495,13 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
+  z-index: 2;
   white-space: nowrap;
 }
 .hero-text {
   width: 146%;
   font-weight: normal;
+  z-index: 2;
   margin-top: 57px;
   padding: 0;
 }
@@ -512,6 +515,7 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
+  z-index: 1;
 }
 .hero-img img {
   width: 100%;
