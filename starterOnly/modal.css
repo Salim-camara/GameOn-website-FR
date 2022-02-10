@@ -131,9 +131,24 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
+
+/* Merci pour votre inscription style */
+.styleContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.styleText {
+  flex-grow: 3;
+  display: flex;
+  align-items: center;
+}
+
 
 .modal-btn {
   font-size: 145%;
@@ -210,7 +225,7 @@ main {
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: scroll;
+  overflow: auto;
   position: relative;
   color: #fff;
   padding-top: 10px;

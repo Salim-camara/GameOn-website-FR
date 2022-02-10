@@ -63,8 +63,8 @@ const handleRadio = () => {
   } 
   if (allTest == true) {
     const error = document.createElement('p');
-    error.style.color = 'red';
-    error.style.fontSize = '15px';
+    error.style.color = '#EA4858FF';
+    error.style.fontSize = '12px';
     error.classList.add('error_radio');
     error.innerHTML = 'Veuillez selectionner une ville';
     radioLast.appendChild(error);
@@ -86,12 +86,15 @@ const handleForm = async () => {
   for (const input of inputs) {
     
     const type = input.type;
+    const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
     const error = (messageErreur) => {
       const error = document.createElement('p');
       error.innerHTML = `${messageErreur}`;
-      error.style.color = 'red';
-      error.style.fontSize = '15px';
-      input.style.border = '2px solid red';
+      error.style.color = '#EA4858FF';
+      error.style.fontSize = '12px';
+      error.style.fontWeight = '100';
+      input.style.border = '2px solid #EA4858FF';
       error.classList.add('error');
       return error
     }
@@ -99,13 +102,13 @@ const handleForm = async () => {
     switch (type) {
 
       case 'text': 
-        if (input.value == null || input.value == '') {
+        if (input.value == null || input.value == '' || input.value.length < 2) {
           input.insertAdjacentElement('afterend', error('Veuillez saisir un nom'));
         }
       break;
 
       case 'email':
-          if (input.value == null || input.value == '') {
+          if (input.value == null || input.value == '' || (regexEmail.test(input.value) == false)) {
             input.insertAdjacentElement('afterend', error('Veuillez saisir un email valide'));
           }
       break;
@@ -126,8 +129,8 @@ const handleForm = async () => {
           if(!(document.querySelector('.checkboxRequired') && document.querySelector('.checkboxRequired').checked)) {
             const error = document.createElement('p');
             error.innerHTML = 'Veuillez selectionner le champ obligatoire';
-            error.style.color = 'red';
-            error.style.fontSize = '15px';
+            error.style.color = '#EA4858FF';
+            error.style.fontSize = '12px';
             error.classList.add('errorCheckbox');
             error.classList.add('error');
 
@@ -150,7 +153,21 @@ btnSubmit.addEventListener('click', async (e) => {
   if ((allErrors.length > 0) || (errorRadio)) {
     console.log('fail');
   } else {
-    console.log('success');
+    const oldForm = document.querySelector('.oldform');
+    oldForm.remove();
+
+    const content = document.querySelector('.modal-body');
+    const text = document.createElement('h1');
+    text.innerHTML = 'Merci pour votre inscription';
+    text.classList.add('styleText');
+    const button = document.createElement('input');
+    button.type = 'submit';
+    button.value = 'Fermer';
+    button.classList.add('button');
+    content.appendChild(text);
+    content.appendChild(button);
+    content.classList.add('styleContent');
+
   }
 })
 
