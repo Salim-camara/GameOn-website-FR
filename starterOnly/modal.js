@@ -167,6 +167,7 @@ btnSubmit.addEventListener('click', async (e) => {
     const button = document.createElement('input');
     button.type = 'submit';
     button.value = 'Fermer';
+    button.onclick = () => closeModal();
     button.classList.add('buttonClose');
     button.classList.add('button');
     content.appendChild(text);
