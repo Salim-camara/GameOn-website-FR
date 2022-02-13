@@ -130,7 +130,7 @@ const handleForm = async () => {
           const lastCheckbox = document.querySelector('.checkboxContainer');
           if(!(document.querySelector('.checkboxRequired') && document.querySelector('.checkboxRequired').checked)) {
             const error = document.createElement('p');
-            error.innerHTML = 'Veuillez selectionner le champ obligatoire';
+            error.innerHTML = `Vous devez accepter les conditions d'utilisation`;
             error.style.color = '#EA4858FF';
             error.style.fontSize = '12px';
             error.style.fontWeight = '100';

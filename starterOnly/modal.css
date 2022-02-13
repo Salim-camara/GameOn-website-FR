@@ -505,6 +505,12 @@ input[data-error]::after {
   margin-top: 57px;
   padding: 0;
 }
+@-moz-document url-prefix() {
+  .hero-text {
+      width: 50%;
+  }
+}
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
