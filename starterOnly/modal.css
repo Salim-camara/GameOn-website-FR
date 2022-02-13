@@ -209,7 +209,7 @@ main {
   width: 100%;
   display: none;
   justify-content: center;
-  align-items: flex-end;
+  /* align-items: center; */
   background-color: transparent;
   z-index: 10;
   margin: 0;
@@ -230,6 +230,7 @@ main {
   margin: 0;
   width: 100%;
   max-width: 500px;
+  max-height: 1100px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -462,7 +463,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
