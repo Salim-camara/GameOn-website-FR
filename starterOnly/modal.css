@@ -230,7 +230,7 @@ main {
   margin: 0;
   width: 100%;
   max-width: 500px;
-  max-height: 1100px;
+  height: 800px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -239,6 +239,9 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+.error {
+  padding-bottom: 0;
 }
 
 .modal-body {
