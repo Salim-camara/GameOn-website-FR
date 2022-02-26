@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" />
       </div> 
       <div class="main-navbar">
 
@@ -27,7 +27,7 @@
         </a>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -183,18 +183,20 @@
               </div>
 
               <div
-                class="formData checkboxContainer">
+                class="formData">
                 <input
                   class="checkbox-input formulaire checkboxRequired"
                   type="checkbox"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <div class="checkboxContainer"></div>
+
                 <input class="checkbox-input formulaire" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -203,9 +205,8 @@
                 <br>
               </div>
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
